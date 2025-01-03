@@ -21,10 +21,18 @@
                 <td>{{ task.title }}</td>
                 <td>{{ task.description }}</td>
                 <td>
-                    <a class="btn btn-warning" href="{% url 'task_update' task.id %}">Edit</a>
-                    <form action="{% url 'task_delete' task.id %}" method="post" class="d-inline">
+                    <!-- Update Button (Form) -->
+                    <form method="POST" action="{% url 'task_update' %}" style="display:inline;">
                         {% csrf_token %}
-                        <button class="btn btn-danger" type="submit">Delete</button>
+                        <input type="hidden" name="task_id" value="{{ task.id }}">
+                        <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                    </form>
+
+                    <!-- Delete Button (Form) -->
+                    <form method="POST" action="{% url 'task_delete' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="task_id" value="{{ task.id }}">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
                 </td>
             </tr>

@@ -16,8 +16,10 @@ def task_create(request):
         form = TaskForm()
     return render(request, 'task_form.html', {'form': form})
 
-def task_update(request, task_id):
+def task_update(request):
+    task_id = request.POST.get('task_id')  # Get task_id from POST data
     task = get_object_or_404(Task, pk=task_id)
+
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
@@ -25,9 +27,11 @@ def task_update(request, task_id):
             return redirect('task_list')
     else:
         form = TaskForm(instance=task)
-    return render(request, 'task_update.html', {'form': form})
 
-def task_delete(request, task_id):
+    return render(request, 'task_update.html', {'form': form, 'task_id': task_id})
+
+def task_delete(request):
+    task_id = request.POST.get('task_id')  # Get task_id from POST data
     task = get_object_or_404(Task, pk=task_id)
     if request.method == 'POST':
         task.delete()
