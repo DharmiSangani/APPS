@@ -4,12 +4,17 @@
     <title>Delete Task</title>
 </head>
 <body>
-    <h1>Delete Task</h1>
-    <p>Are you sure you want to delete the task: <strong>{{ task.title }}</strong>?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Yes, Delete</button>
-    </form>
-    <a href="{% url 'task_list' %}">No, Go Back</a>
+    <div class="container mt-5">
+        <h2 class="text-danger">Confirm Delete</h2>
+        <p>Are you sure you want to delete the task: <strong>{{ task.title }}</strong>?</p>
+        <div class="mt-4">
+            <!-- Confirm Delete -->
+            <form method="POST" action="">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                <a href="{% url 'task_list' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
