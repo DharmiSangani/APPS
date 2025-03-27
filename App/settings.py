@@ -79,7 +79,6 @@ WSGI_APPLICATION = 'App.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "todolist",
         # add you mysql credentials here
     }
 }

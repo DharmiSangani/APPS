@@ -4,7 +4,8 @@ from .forms import TaskForm
 
 def task_list(request):
     tasks = Task.objects.all()
-    return render(request, 'task_list.html', {'tasks': tasks})
+    context = {'tasks': tasks}
+    return render(request, 'task_list.html', context)
 
 def task_create(request):
     if request.method == 'POST':
