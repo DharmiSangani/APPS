@@ -80,7 +80,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "todolist",
-        # add you mysql credential here
+        # add you mysql credentials here
     }
 }
 
